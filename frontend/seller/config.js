@@ -15,7 +15,7 @@ var config = {
     srcServerDir:           path.join(root, 'server'),
 
     // HTML Layout ====================================================
-    srcHtmlLayout:          path.join(root, 'app', 'dashboard.html'),
+    srcHtmlLayout:          path.join(root, 'app', 'index.html'),
 
     // Site Config ====================================================
     siteTitle:              'Almibar',
