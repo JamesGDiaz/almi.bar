@@ -35,7 +35,7 @@ const login = (req, res, next, cb) => {
 const register = (data, callback) => {
   const { username, name, email, password } = data
   const passwordData = Password.create(password)
-  const id = crypto.createHmac('sha512', email).update(name).digest('hex')
+  const id = crypto.createHmac('sha256', email).update(name).digest('hex')
   const activationHash = crypto.randomBytes(48).toString('hex')
   if (!name || !email || !passwordData) {
     return callback(new Error('Parameters not found!'))

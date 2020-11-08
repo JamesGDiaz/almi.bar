@@ -10,6 +10,7 @@ const userSchema = new Schema({
   id: {
     type: String,
     required: true,
+    unique: true,
     minlength: 5,
     maxlength: 1000
   },
@@ -21,13 +22,15 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
     minlength: 5,
     maxlength: 100
   },
   name: {
     type: String,
     required: true,
-    minlength: 5,
+    unique: true,
+    minlength: 4,
     maxlength: 100
   },
   email: {
@@ -39,7 +42,8 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    minlength: 5,
+    required: true,
+    minlength: 7,
     maxlength: 1000
   },
   salt: {
@@ -69,11 +73,14 @@ const userSchema = new Schema({
     maxlength: 5
   },
   location: {
-    type: String,
-    minlength: 3,
-    maxlength: 100
+    country: { type: String, lowercase: true, maxlength: 2, minlength: 2 },
+    state: { type: String, lowercase: true, maxlength: 2, minlength: 2 },
+    city: { type: String, lowercase: true, maxlength: 2, minlength: 2 },
+    neighborhood: { type: String, lowercase: true, maxlength: 2, minlength: 2 },
+    postalCode: { type: String, lowercase: true, maxlength: 2, minlength: 2 }
   },
-  website: String,
+  instagram: String,
+  facebook: String,
   created_at: Date,
   updated_at: Date
 })

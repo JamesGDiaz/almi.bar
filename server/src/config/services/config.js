@@ -7,6 +7,7 @@ const env = process.env.NODE_ENV
 if (env === 'production') {
   basePath = './'
 }
+console.log(basePath)
 const envPath = path.join(basePath, `.env/${env}.config.env`)
 const envConfig = require('dotenv').config({
   path: envPath
@@ -32,8 +33,10 @@ const test = {
   mongoUrl: `mongodb://${process.env.DB_USER}:${encodeURIComponent(
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
-  clientStaticFolder: path.join(basePath, 'client/build/static'),
-  clientBuildFolder: path.join(basePath, 'client/build'),
+  defaultStaticFolder: path.join(basePath, 'frontend/default/build/static'),
+  defaultBuildFolder: path.join(basePath, 'frontend/default/build'),
+  dashboardStaticFolder: path.join(basePath, 'frontend/dashboard/dist/static'),
+  dashboardBuildFolder: path.join(basePath, 'frontend/dashboard/dist'),
   paypalClientId: process.env.PAYPAL_CLIENT_ID || '',
   paypalClientSecret: process.env.PAYPAL_CLIENT_SECRET || '',
   googleClientId: process.env.GOOGLE_CLIENT_ID || '',
@@ -58,8 +61,10 @@ const development = {
   mongoUrl: `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
-  clientStaticFolder: path.join(basePath, 'client/build/static'),
-  clientBuildFolder: path.join(basePath, 'client/build'),
+  defaultStaticFolder: path.join(basePath, 'frontend/default/build/static'),
+  defaultBuildFolder: path.join(basePath, 'frontend/default/build'),
+  dashboardStaticFolder: path.join(basePath, 'frontend/dashboard/build/static'),
+  dashboardBuildFolder: path.join(basePath, 'frontend/dashboard/build'),
   paypalClientId: process.env.PAYPAL_CLIENT_ID || '',
   paypalClientSecret: process.env.PAYPAL_CLIENT_SECRET || '',
   googleClientId: process.env.GOOGLE_CLIENT_ID || '',
@@ -84,8 +89,10 @@ const production = {
   mongoUrl: `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
-  clientStaticFolder: path.join(basePath, 'client/static'),
-  clientBuildFolder: path.join(basePath, 'client'),
+  defaultStaticFolder: path.join(basePath, 'frontend/default/build/static'),
+  defaultBuildFolder: path.join(basePath, 'frontend/default/build'),
+  dashboardStaticFolder: path.join(basePath, 'frontend/dashboard/build/static'),
+  dashboardBuildFolder: path.join(basePath, 'frontend/dashboard/build'),
   paypalClientId: process.env.PAYPAL_CLIENT_ID || '',
   paypalClientSecret: process.env.PAYPAL_CLIENT_SECRET || '',
   googleClientId: process.env.GOOGLE_CLIENT_ID || '',

@@ -7,10 +7,11 @@
   "contact": "francogiordanid@gmail.com",
   "license": "MIT",
   "scripts": {
-    "dev:client": "npm start --prefix client/",
+    "dev:default": "npm start --prefix frontend/default",
+    "dev:dashboard": "npm start --prefix frontend/dashboard/",
     "dev:server": "npm run dev --prefix server/",
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
-    "build": "npm run build --prefix client/ && npm run build --prefix server/",
+    "dev": "concurrently \"npm run dev:default\" \"npm run dev:dashboard\" \"npm run dev:server\"",
+    "build": "npm run build --prefix frontend/default && npm run build:prod --prefix frontend/dashboard && npm run build --prefix server/",
     "start": "pm2 start build/app.js -i max",
     "stop": "pm2 stop all",
     "delete": "pm2 delete app"

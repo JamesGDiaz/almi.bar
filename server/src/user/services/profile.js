@@ -22,9 +22,9 @@ const update = (data, callback) => {
     {
       new: true
     },
-    (err, user) => {
-      if (!err && user) {
-        return callback(null, user)
+    (err, seller) => {
+      if (!err && seller) {
+        return callback(null, seller)
       } else {
         return callback(err)
       }
