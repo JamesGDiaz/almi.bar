@@ -2,7 +2,7 @@
 
 const express = require('express')
 const router = express.Router()
-const user = require('../src/user')
+const user = require('../src/api/user')
 const protect = require('./protect')
 
 router.post('/passchange', protect, user.passChange)

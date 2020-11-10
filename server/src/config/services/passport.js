@@ -2,8 +2,8 @@
 
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-const Password = require('../../auth/services/password')
-const User = require('../../user/user.model')
+const Password = require('../../api/auth/services/password')
+const User = require('../../models/user.model')
 // const show = require('./logging')
 
 /**
@@ -67,7 +67,7 @@ passport.use(
  */
 
 /**
- * Passport githubstrategy
+ * Passport instagramstrategy
  */
 
 /**

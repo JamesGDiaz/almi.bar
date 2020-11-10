@@ -1,22 +1,18 @@
-# Free React landing page template
+# Free Tailwind landing page template
 
-![Open React template preview](https://user-images.githubusercontent.com/2683512/78789364-545e7100-79ad-11ea-9e3c-9528c99cda8e.png)
+![Simple TailwindCSS template preview](https://user-images.githubusercontent.com/2683512/96160974-f93aa780-0f16-11eb-9ce4-81d94b216be6.png)
 
-**Open** is a **free React landing page template designed** for developers/makers who want to create a quick and professional landing page for their open source projects, SaaS products, online services, and more.
-
-Use it for whatever you want, and be sure to reach us out on [Twitter](https://twitter.com/Cruip_com) if you build anything cool/useful with it.
-
-Created and maintained with ❤️ by [Cruip.com](https://cruip.com).
+**Simple Light** is a free landing page template built on top of **TailwindCSS** and fully coded in **React**. Simple light is designed to provide all the basic components a developer need to create a landing page for SaaS products, online services, and more. 
+Use it for whatever you want, and be sure to reach us out on Twitter if you build anything cool/useful with it.
+Created and maintained with ❤️ by [Cruip.com](https://cruip.com/).
 
 ## Live demo
 
-Check the live demo here 👉️ [https://open.cruip.com/](https://open.cruip.com/)
+Check the live demo here 👉️ [https://simple.cruip.com/](https://simple.cruip.com/)
 
-## Open PRO
+## Simple PRO
 
-Looking for more pages and components? Have a look at the **premium version** here 👉️ [https://cruip.com/demos/open-pro/](https://cruip.com/demos/open-pro/)
-
-*The premium template is built on-the-top of [Tailwind CSS](https://tailwindcss.com/), and React components have been re-built from scratch.* 
+Looking for more pages and components? Have a look at the **premium version** here 👉️ [https://cruip.com/demos/simple/](https://cruip.com/demos/simple/)
 
 ## Table of contents
 
@@ -122,7 +118,6 @@ In order to track visitors, you need to set an [environment variable](https://cr
 ## Credits
 
 - [Nucleo](https://nucleoapp.com/)
-- [Unsplash](https://unsplash.com/)
 
 ## Terms and License
 

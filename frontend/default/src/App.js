@@ -1,54 +1,58 @@
-import React, { useRef, useEffect } from 'react'
-import { useLocation, Switch } from 'react-router-dom'
-import AppRoute from './utils/AppRoute'
-import ScrollReveal from './utils/ScrollReveal'
-import ReactGA from 'react-ga'
+import React, { useEffect } from 'react';
+import {
+  Switch,
+  Route,
+  useLocation
+} from 'react-router-dom';
 
-// Layouts
-import { LayoutDefault, LayoutNoHeader } from './layouts'
+import './css/style.scss';
 
-// Views
-import Home from './views/Home'
-import Login from './views/Login'
-import SignUp from './views/Signup'
+import AOS from 'aos';
+import { focusHandling } from 'cruip-js-toolkit';
 
-// Initialize Google Analytics
-ReactGA.initialize(process.env.REACT_APP_GA_CODE)
+import Home from './pages/Home';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import ResetPassword from './pages/ResetPassword';
 
-const trackPage = (page) => {
-  ReactGA.set({ page })
-  ReactGA.pageview(page)
-}
+function App() {
 
-const App = () => {
-  const childRef = useRef()
-  let location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
-    const page = location.pathname
-    document.body.classList.add('is-loaded')
-    childRef.current.init()
-    trackPage(page)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location])
+    AOS.init({
+      once: true,
+      disable: 'phone',
+      duration: 700,
+      easing: 'ease-out-cubic',
+    });
+  });
+
+  useEffect(() => {
+    document.querySelector('html').style.scrollBehavior = 'auto'
+    window.scroll({ top: 0 })
+    document.querySelector('html').style.scrollBehavior = ''
+    focusHandling('outline');
+  }, [location.pathname]); // triggered on route change
 
   return (
-    <ScrollReveal
-      ref={childRef}
-      children={() => (
-        <Switch>
-          <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
-          <AppRoute exact path="/login" component={Login} layout={LayoutNoHeader} />
-          <AppRoute
-            exact
-            path="/signup"
-            component={SignUp}
-            layout={LayoutNoHeader}
-          />
-        </Switch>
-      )}
-    />
-  )
+    <>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/signin">
+          <SignIn />
+        </Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+        <Route path="/reset-password">
+          <ResetPassword />
+        </Route>
+      </Switch>
+    </>
+  );
 }
 
-export default App
+export default App;

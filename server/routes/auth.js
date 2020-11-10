@@ -2,7 +2,7 @@
 
 const express = require('express')
 const router = express.Router()
-const auth = require('../src/auth')
+const auth = require('../src/api/auth')
 
 router.post('/check', auth.check)
 router.post('/login/local', auth.login)

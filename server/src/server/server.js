@@ -17,7 +17,7 @@ const mongoose = require('mongoose')
 let server = null
 
 /**
- * Start HTTP/2 server, database, socket.io connection
+ * Start HTTP server, database, socket.io connection
  * Load routes, services, check memory usage
  * @function
  */
