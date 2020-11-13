@@ -10,7 +10,6 @@ const action = {}
 action.passChange = (req, res, next) => {
   show.debug('Changing password...')
   return res.json({
-    type: 'passchange',
     result: 'Not implemented!'
   })
 }

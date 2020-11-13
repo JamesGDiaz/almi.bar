@@ -20,18 +20,11 @@ const userSchema = new Schema(
       minlength: 5,
       maxlength: 1000
     },
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      minlength: 5,
-      maxlength: 100
-    },
     name: {
       type: String,
       required: true,
       unique: true,
-      minlength: 4,
+      minlength: 5,
       maxlength: 100
     },
     email: {
@@ -85,8 +78,16 @@ const userSchema = new Schema(
       },
       postalCode: { type: String, lowercase: true, maxlength: 2, minlength: 2 }
     },
-    instagram: String,
-    facebook: String
+    instagramId: {
+      type: String,
+      minlength: 5,
+      maxlength: 1000
+    },
+    facebookId: {
+      type: String,
+      minlength: 5,
+      maxlength: 1000
+    }
   },
   { timestamps: true }
 )

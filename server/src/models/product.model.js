@@ -1,33 +1,26 @@
 'use strict'
 
 const mongoose = require('mongoose')
-const { v4: uuidv4 } = require('uuid')
 const { default: ShortUniqueId } = require('short-unique-id')
 const { Schema } = mongoose
 
 require('mongoose-currency').loadType(mongoose)
 var Currency = mongoose.Types.Currency
 
-const shortId = new ShortUniqueId()
+const shortId = new ShortUniqueId({ length: 6 })
 
 /**
  * Create user schema
  */
 const productSchema = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-      default: uuidv4()
-    },
     shortId: {
       type: String,
       unique: true,
       required: true,
       minlength: 4,
       maxlength: 9,
-      default: shortId({ length: 6 })
+      default: shortId
     },
     sku: {
       type: String,
@@ -38,7 +31,7 @@ const productSchema = new Schema(
     name: {
       type: String,
       required: true,
-      unique: true,
+      unique: false,
       minlength: 5,
       maxlength: 100
     },

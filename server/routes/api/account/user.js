@@ -2,8 +2,8 @@
 
 const express = require('express')
 const router = express.Router()
-const user = require('../src/api/user')
-const protect = require('./protect')
+const user = require('../../../src/api/user')
+const { protect } = require('../../../src/middlewares')
 
 router.post('/passchange', protect, user.passChange)
 router.post('/profileupdate', protect, user.profileUpdate)

@@ -15,6 +15,13 @@ const productImages = new Schema(
       minlength: 5,
       maxlength: 1000
     },
+    productShortId: {
+      type: String,
+      required: true,
+      unique: true,
+      minlength: 5,
+      maxlength: 1000
+    },
     images: [{ filename: String, url: String }]
   },
   { timestamps: true }

@@ -2,8 +2,14 @@
 
 const passport = require('passport')
 const crypto = require('crypto')
+const { default: ShortUniqueId } = require('short-unique-id')
 const Password = require('./password')
 const User = require('../../../models/user.model')
+
+const shortId = new ShortUniqueId({
+  dictionary: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+  length: 9
+})
 
 /**
  * Passport local authentication
@@ -35,7 +41,7 @@ const login = (req, res, next, cb) => {
 const register = (data, callback) => {
   const { username, name, email, password } = data
   const passwordData = Password.create(password)
-  const id = crypto.createHmac('sha256', email).update(name).digest('hex')
+  const id = shortId()
   const activationHash = crypto.randomBytes(48).toString('hex')
   if (!name || !email || !passwordData) {
     return callback(new Error('Parameters not found!'))

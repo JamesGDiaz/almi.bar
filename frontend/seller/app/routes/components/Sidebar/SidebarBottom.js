@@ -9,17 +9,13 @@ import {
 
 import { FooterAuth } from '../Pages/FooterAuth';
 import { FooterText } from '../FooterText';
-import { VersionSelector } from '../VersionSelector';
 
-const SidebarBottomA = () => (
+const SidebarBottom = () => (
     <React.Fragment>
         { /* START Desktop */ }
         <Sidebar.HideSlim>
-            <Sidebar.Section className="pb-0">
-                <VersionSelector sidebar dashboard="Airframe" />
-            </Sidebar.Section>
             <Sidebar.Section>
-                <FooterAuth className="text-muted" />
+                <FooterAuth className="text-muted text-center" />
             </Sidebar.Section>
         </Sidebar.HideSlim>
         { /* END Desktop */ }
@@ -27,15 +23,6 @@ const SidebarBottomA = () => (
         { /* START Slim Only */ }
         <Sidebar.ShowSlim>
             <Sidebar.Section className="text-center">
-                { /* Slim Version Selector */ }
-                <VersionSelector
-                    dashboard="Airframe"
-                    sidebar
-                    compact
-                    render={() => (
-                        <i className="fa fa-fw fa-toggle-on"></i>
-                    )}
-                />
 
                 { /* Footer Text as Tooltip */ }
                 <Button
@@ -56,4 +43,4 @@ const SidebarBottomA = () => (
     </React.Fragment>
 )
 
-export { SidebarBottomA };
+export { SidebarBottom };

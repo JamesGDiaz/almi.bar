@@ -28,6 +28,7 @@ const corsOptions = {
  */
 const init = () => {
   const app = express()
+  app.set('trust proxy', 1)
   app.use('/build/static', express.static(config.defaultStaticFolder))
   app.use('/build', express.static(config.defaultBuildFolder))
   app.set('views', config.defaultBuildFolder)

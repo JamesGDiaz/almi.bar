@@ -15,7 +15,7 @@ const profilePictures = new Schema(
       minlength: 5,
       maxlength: 1000
     },
-    images: [{ filename: String, url: String }]
+    image: [{ filename: String, url: String }]
   },
   { timestamps: true }
 )

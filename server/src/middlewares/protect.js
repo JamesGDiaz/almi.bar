@@ -1,6 +1,6 @@
 'use strict'
 
-const { show } = require('../src/config/')
+const { show } = require('../config')
 
 const protect = (req, res, next) => {
   if (req.isAuthenticated()) {

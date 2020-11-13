@@ -5,6 +5,11 @@ const show = require('./logging')
 const mongoose = require('mongoose')
 
 /**
+ * Connection object
+ */
+let connection
+
+/**
  * Connecting to database
  */
 const init = () => {
@@ -15,6 +20,7 @@ const init = () => {
     useFindAndModify: false
   })
   const db = mongoose.connection
+  connection = mongoose.connection
   error(db)
   open(db)
 }
@@ -41,5 +47,5 @@ const open = (db) => {
 }
 
 module.exports = {
-  init
+  init, connection
 }

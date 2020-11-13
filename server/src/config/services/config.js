@@ -7,7 +7,6 @@ const env = process.env.NODE_ENV
 if (env === 'production') {
   basePath = './'
 }
-console.log(basePath)
 const envPath = path.join(basePath, `.env/${env}.config.env`)
 const envConfig = require('dotenv').config({
   path: envPath
@@ -33,6 +32,7 @@ const test = {
   mongoUrl: `mongodb://${process.env.DB_USER}:${encodeURIComponent(
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
+  databaseName: 'almibar',
   defaultStaticFolder: path.join(basePath, 'frontend/default/build/static'),
   defaultBuildFolder: path.join(basePath, 'frontend/default/build'),
   dashboardStaticFolder: path.join(basePath, 'frontend/dashboard/dist/static'),
@@ -54,6 +54,7 @@ const development = {
   host: process.env.HOST,
   port: process.env.PORT,
   url: `http://${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT}`,
+  apiUrl: `http://${process.env.HOST}:${process.env.PORT}/api/v1`,
   redisUrl: process.env.REDIS_URL,
   redisSecret,
   emailAddress: process.env.EMAIL_ADDRESS,
@@ -61,6 +62,7 @@ const development = {
   mongoUrl: `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
+  databaseName: 'almibar',
   defaultStaticFolder: path.join(basePath, 'frontend/default/build/static'),
   defaultBuildFolder: path.join(basePath, 'frontend/default/build'),
   dashboardStaticFolder: path.join(basePath, 'frontend/dashboard/build/static'),
@@ -81,7 +83,10 @@ const production = {
   ip: process.env.IP,
   host: process.env.HOST,
   port: process.env.PORT,
-  url: `https://${process.env.HOST}:${process.env.PORT}`,
+  url: (user) => {
+    return `https://${user}.almi.bar`
+  },
+  apiUrl: `http://api.almi.bar/v1`,
   redisUrl: process.env.REDIS_URL,
   redisSecret,
   emailAddress: process.env.EMAIL_ADDRESS,
@@ -89,6 +94,7 @@ const production = {
   mongoUrl: `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
+  databaseName: 'almibar',
   defaultStaticFolder: path.join(basePath, 'frontend/default/build/static'),
   defaultBuildFolder: path.join(basePath, 'frontend/default/build'),
   dashboardStaticFolder: path.join(basePath, 'frontend/dashboard/build/static'),

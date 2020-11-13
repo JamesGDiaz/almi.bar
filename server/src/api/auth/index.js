@@ -1,5 +1,5 @@
 'use strict'
 
-const action = require('./auth')
+const auth = require('./auth')
 
-module.exports = action
+module.exports = auth

@@ -13,10 +13,8 @@ import './../styles/main.scss';
 import './../styles/plugins/plugins.scss';
 import './../styles/plugins/plugins.css';
 
-import {
-    RoutedNavbars,
-    RoutedSidebars,
-} from './../routes';
+import { DefaultNavbar } from './../layout/components/DefaultNavbar'
+import { DefaultSidebar } from './../layout/components/DefaultSidebar'
 
 const favIcons = [
     { rel: 'icon', type: 'image/x-icon', href: require('./../images/favicons/favicon.ico') },
@@ -40,11 +38,11 @@ class AppLayout extends React.Component {
                 <Layout sidebarSlim favIcons={ favIcons }>
                     { /* --------- Navbar ----------- */ }
                     <Layout.Navbar>
-                        <RoutedNavbars />
+                        <DefaultNavbar/>
                     </Layout.Navbar>
                     { /* -------- Sidebar ------------*/ }
                     <Layout.Sidebar>
-                        <RoutedSidebars />
+                        <DefaultSidebar />
                     </Layout.Sidebar>
 
                     { /* -------- Content ------------*/ }

@@ -8,8 +8,7 @@ const User = require('../../../models/user.model')
  * @param {object} data
  * @param {callback} callback
  */
-const activate = (data, callback) => {
-  const { hash } = data
+const activate = (hash, callback) => {
   User.findOneAndUpdate({ activation: hash },
     {
       $set: {

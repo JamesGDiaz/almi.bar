@@ -24,17 +24,20 @@ RedisClient.on('ready', () => {
  * Initialize redis for session cache
  */
 const init = (app) => {
-  app.use(session({
-    store: redisStore,
-    secret: config.redisSecret,
-    saveUninitialized: true,
-    resave: true,
-    rolling: true,
-    cookie: {
-      secure: true, // true if https
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-    }
-  }))
+  app.use(
+    session({
+      store: redisStore,
+      secret: config.redisSecret,
+      saveUninitialized: true,
+      resave: true,
+      rolling: true,
+      name: 'sessionId',
+      cookie: {
+        secure: config.env === 'production', // true if https (production)
+        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+      }
+    })
+  )
 }
 
 module.exports = {
