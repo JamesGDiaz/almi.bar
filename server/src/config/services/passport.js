@@ -73,19 +73,30 @@ passport.use(
  */
 
 /**
- * Passport facebookstrategy 
+ * Passport facebookstrategy
  */
-passport.use(new FacebookStrategy({
-  clientID: config.facebookAppId,
-  clientSecret: config.facebookAppSecret,
-  callbackURL: config.url + "/api/v1/auth/facebook/callback"
-},
-function(accessToken, refreshToken, profile, cb) {
-  User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-    return cb(err, user);
-  });
-}
-));
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: config.facebookAppId,
+      clientSecret: config.facebookAppSecret,
+      callbackURL: config.url + '/api/v1/auth/facebook/callback',
+      profileFields: [
+        'id',
+        'displayName',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'email'
+      ]
+    },
+    function (accessToken, refreshToken, profile, cb) {
+      User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+        return cb(err, user)
+      })
+    }
+  )
+)
 
 /**
  * Initialize passport

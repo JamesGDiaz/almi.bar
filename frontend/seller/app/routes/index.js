@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import propTypes from "prop-types";
 import { Route, Switch, Redirect } from "react-router";
-import { connect } from "react-redux";
-import { checkLoginUserAction } from "../store/actions/authenticationActions";
 
 // ----------- Pages Imports ---------------
 import Analytics from "./Dashboards/Analytics";
@@ -23,8 +21,8 @@ import Register from "./Pages/Register";
 import Success from "./Pages/Success";
 
 //------- Private Route Component --------
-const PrivateRoute = ({ component: Component, authenticated, lazy, ...rest }) =>
-  lazy ? (
+const PrivateRoute = ({ component: Component, authenticated, lazy, ...rest }) => {
+  return lazy ? (
     <Route
       {...rest}
       exact
@@ -41,6 +39,7 @@ const PrivateRoute = ({ component: Component, authenticated, lazy, ...rest }) =>
   ) : (
     <Route {...rest} exact render={(props) => (authenticated ? <Component {...props} /> : <Redirect to="/login" />)} />
   );
+};
 PrivateRoute.propTypes = {
   component: propTypes.oneOfType([propTypes.element, propTypes.func]),
   authenticated: propTypes.bool,
@@ -50,33 +49,33 @@ PrivateRoute.propTypes = {
 //------ Route Definitions --------
 // eslint-disable-next-line no-unused-vars
 export const RoutedContent = (props) => {
-
+  const { authenticated } = props;
   return (
     <Switch>
       <Redirect from="/" to="/dashboard" exact />
 
-      <PrivateRoute exact path="/dashboard" component={Analytics} authenticated={props.authenticated} />
+      <PrivateRoute exact path="/dashboard" component={Analytics} authenticated={authenticated} />
 
-      <PrivateRoute lazy exact path="/profile" component={ProfileDetails} authenticated={props.authenticated} />
-      <PrivateRoute lazy exact path="/profile/edit" component={ProfileEdit} authenticated={props.authenticated} />
-      <PrivateRoute lazy exact path="/profile/edit/security" component={AccountEdit} authenticated={props.authenticated} />
-      <PrivateRoute lazy exact path="/profile/edit/notifications" component={SettingsEdit} authenticated={props.authenticated} />
+      <PrivateRoute lazy exact path="/profile" component={ProfileDetails} authenticated={authenticated} />
+      <PrivateRoute lazy exact path="/profile/edit" component={ProfileEdit} authenticated={authenticated} />
+      <PrivateRoute lazy exact path="/profile/edit/security" component={AccountEdit} authenticated={authenticated} />
+      <PrivateRoute lazy exact path="/profile/edit/notifications" component={SettingsEdit} authenticated={authenticated} />
 
-      <PrivateRoute lazy exact path="/products" component={Analytics} authenticated={props.authenticated} />
-      <PrivateRoute lazy exact path="/products/create" component={Analytics} authenticated={props.authenticated} />
-      <PrivateRoute lazy exact path="/products/inventory" component={Analytics} authenticated={props.authenticated} />
+      <PrivateRoute lazy exact path="/products" component={Analytics} authenticated={authenticated} />
+      <PrivateRoute lazy exact path="/products/create" component={Analytics} authenticated={authenticated} />
+      <PrivateRoute lazy exact path="/products/inventory" component={Analytics} authenticated={authenticated} />
 
-      <PrivateRoute lazy exact path="/orders" component={Analytics} authenticated={props.authenticated} />
+      <PrivateRoute lazy exact path="/orders" component={Analytics} authenticated={authenticated} />
 
-      <PrivateRoute lazy exact path="/sales" component={Analytics} authenticated={props.authenticated} />
+      <PrivateRoute lazy exact path="/sales" component={Analytics} authenticated={authenticated} />
 
-      <PrivateRoute lazy exact path="/payments" component={Analytics} authenticated={props.authenticated} />
+      <PrivateRoute lazy exact path="/payments" component={Analytics} authenticated={authenticated} />
 
-      <PrivateRoute lazy exact path="/stats" component={Analytics} authenticated={props.authenticated} />
+      <PrivateRoute lazy exact path="/stats" component={Analytics} authenticated={authenticated} />
 
-      <PrivateRoute lazy exact path="/shipping" component={Analytics} authenticated={props.authenticated} />
+      <PrivateRoute lazy exact path="/shipping" component={Analytics} authenticated={authenticated} />
 
-      <PrivateRoute lazy exact path="/preferences" component={Analytics} authenticated={props.authenticated} />
+      <PrivateRoute lazy exact path="/preferences" component={Analytics} authenticated={authenticated} />
 
       {/*    Pages Routes    */}
       <Route component={Login} path="/login" />
@@ -99,4 +98,3 @@ export const RoutedContent = (props) => {
 RoutedContent.propTypes = {
   authenticated: propTypes.bool,
 };
-

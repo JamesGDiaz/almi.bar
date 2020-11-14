@@ -1,7 +1,6 @@
 'use strict'
 
-const auth = require('./auth')
-const protect = require('./protect')
+const auth = require('./authenticated')
 const images = require('./images')
 
-module.exports = { auth, protect, images }
+module.exports = { auth, images }

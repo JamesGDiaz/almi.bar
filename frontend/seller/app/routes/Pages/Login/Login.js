@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect } from "react";
+import propTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import { Form, FormGroup, FormText, Input, CustomInput, Button, Label, EmptyLayo
 import { HeaderAuth } from "../../components/Pages/HeaderAuth";
 import { FooterAuth } from "../../components/Pages/FooterAuth";
 
-import { loginUserAction, checkLoginUserAction } from "../../../store/actions/authenticationActions";
+import { loginUserAction } from "../../../store/actions/authenticationActions";
 
 function Login(props) {
   const handleLogin = (e) => {
@@ -18,6 +18,12 @@ function Login(props) {
 
     props.dispatch(loginUserAction({ email, password }));
   };
+
+  useEffect(() => {
+    if (props.login.authenticated) {
+      props.history.push("/");
+    }
+  }, [props.login.authenticated]);
 
   return (
     <EmptyLayout>
@@ -56,6 +62,9 @@ function Login(props) {
           <Link to="/register" className="ml-auto text-decoration-none">
             Register
           </Link>
+          <Link to="/" className="ml-auto text-decoration-none">
+            Home
+          </Link>
         </div>
         {/* END Bottom Links */}
         {/* START Footer */}
@@ -67,9 +76,13 @@ function Login(props) {
 }
 
 Login.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  history: propTypes.object,
+  dispatch: propTypes.func.isRequired,
+  login: propTypes.object,
 };
 
-const mapStateToProps = (response) => ({ response });
+const mapStateToProps = (response) => ({
+  login: response.login,
+});
 
 export default connect(mapStateToProps)(Login);

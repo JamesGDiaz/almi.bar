@@ -8,7 +8,7 @@ import {
 
 import { SidebarMiddleNav } from './SidebarMiddleNav';
 
-import { SidebarTop } from '../../routes/components/Sidebar/SidebarTop'
+import SidebarTop from '../../routes/components/Sidebar/SidebarTop'
 import { SidebarBottom } from '../../routes/components/Sidebar/SidebarBottom'
 
 import { LogoThemed } from '../../routes/components/LogoThemed/LogoThemed';

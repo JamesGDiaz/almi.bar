@@ -8,6 +8,7 @@
  */
 const logout = (req, callback) => {
   try {
+    req.session.destroy()
     req.logOut()
     return callback()
   } catch (err) {

@@ -1,22 +1,28 @@
 import * as types from "./index";
 
-export const registerUserAction = (user) => {
+export const registerUserAction = (payload) => {
   return {
     type: types.REGISTER_USER,
-    user,
+    payload,
   };
 };
 
-export const loginUserAction = (user) => {
+export const loginUserAction = (payload) => {
   return {
     type: types.LOGIN_USER,
-    user,
+    payload,
   };
 };
 
-export const checkLoginUserAction = (user) => {
+export const checkLoginUserAction = () => {
   return {
-    type: types.LOGIN_USER,
-    user,
+    type: types.CHECK_LOGIN_USER,
+  };
+};
+
+
+export const logoutUserAction = () => {
+  return {
+    type: types.LOGOUT_USER,
   };
 };

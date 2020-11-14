@@ -1,22 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Button } from "react-dom";
+import PropTypes from "prop-types";
 
-import {
-    NavItem,
-    NavLink
-} from './../../components';
+import { NavItem, NavLink } from "./../../components";
 
-const NavbarUser = (props) => (
-    <NavItem { ...props }>
-        <NavLink tag={ Link } to="/login">
-            <i className="fa fa-power-off"></i>
-        </NavLink>
+const NavbarUser = (props) => {
+  const dispatchLogout = () => {
+    console.log("logging out");
+  };
+  return (
+    <NavItem {...props}>
+      <NavLink tag={Button} onClick={dispatchLogout}>
+        <i className="fa fa-power-off"></i>
+      </NavLink>
     </NavItem>
-);
+  );
+};
 NavbarUser.propTypes = {
-    className: PropTypes.string,
-    style: PropTypes.object
+  className: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export { NavbarUser };

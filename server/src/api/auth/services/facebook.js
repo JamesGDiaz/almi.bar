@@ -1,14 +1,13 @@
 'use strict'
 
 const passport = require('passport')
-const crypto = require('crypto')
 const User = require('../../../models/user.model')
 const { default: ShortUniqueId } = require('short-unique-id')
 
 const shortId = new ShortUniqueId({
-    dictionary: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-    length: 9
-  })
+  dictionary: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+  length: 9
+})
 
 /**
  * Passport google authentication
@@ -30,11 +29,10 @@ const login = (req, res, next) => {
  * @param {object} next
  */
 const callback = (req, res, next) => {
-  passport.authenticate('facebook', { failureRedirect: '/login', session: true })(
-    req,
-    res,
-    next
-  )
+  passport.authenticate('facebook', {
+    failureRedirect: '/login',
+    session: true
+  })(req, res, next)
 }
 
 /**

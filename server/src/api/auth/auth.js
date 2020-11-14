@@ -14,6 +14,7 @@ const { config, show } = require('../../config')
 const action = {}
 action.google = {}
 action.github = {}
+action.facebook = {}
 
 /**
  * Check login

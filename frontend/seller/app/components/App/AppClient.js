@@ -12,17 +12,16 @@ import { checkLoginUserAction } from "../../store/actions/authenticationActions"
 const basePath = process.env.BASE_PATH || "/";
 
 const AppClient = (props) => {
+  const { login } = props;
   useEffect(() => {
-    console.log("checkinglogin");
     props.dispatch(checkLoginUserAction());
-    console.log("myprops", props);
     return () => {};
-  }, []);
+  }, [props.login.authenticated]);
 
   return (
     <Router basename={basePath}>
       <AppLayout>
-        <RoutedContent authenticated={props.authenticated} />
+        <RoutedContent authenticated={login.authenticated} />
       </AppLayout>
     </Router>
   );
@@ -30,8 +29,11 @@ const AppClient = (props) => {
 AppClient.propTypes = {
   dispatch: propTypes.func,
   authenticated: propTypes.bool,
+  login: propTypes.object,
 };
 
-const mapStateToProps = (response) => ({ response });
+const mapStateToProps = (response) => ({
+  login: response.login,
+});
 
 export default connect(mapStateToProps)(hot(module)(AppClient));
