@@ -4,6 +4,7 @@
 const local = require('./services/local')
 const google = require('./services/google')
 const github = require('./services/github')
+const facebook = require('./services/facebook')
 const logout = require('./services/logout')
 const password = require('./services/password')
 const { activate } = require('./services/activate')
@@ -123,6 +124,30 @@ action.github.callback = (req, res, next) => {
 action.github.ready = (req, res) => {
   show.debug('Login with github ready.')
   github.ready(config.url, req, res)
+}
+
+/**
+ * Login with Facebook
+ */
+action.facebook.login = (req, res, next) => {
+  show.debug('Logging in with facebook...')
+  facebook.login(req, res, next)
+}
+
+/**
+ * Login with Facebook callback
+ */
+action.facebook.callback = (req, res, next) => {
+  show.debug('Login with facebook callback...')
+  facebook.callback(req, res, next)
+}
+
+/**
+ * Login with Facebook cb
+ */
+action.facebook.ready = (req, res) => {
+  show.debug('Login with facebook ready.')
+  facebook.ready(config.url, req, res)
 }
 
 /**

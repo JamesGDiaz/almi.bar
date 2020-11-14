@@ -2,8 +2,10 @@
 
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const FacebookStrategy = require('passport-facebook')
 const Password = require('../../api/auth/services/password')
 const User = require('../../models/user.model')
+const config = require('./config')
 // const show = require('./logging')
 
 /**
@@ -69,6 +71,21 @@ passport.use(
 /**
  * Passport instagramstrategy
  */
+
+/**
+ * Passport facebookstrategy 
+ */
+passport.use(new FacebookStrategy({
+  clientID: config.facebookAppId,
+  clientSecret: config.facebookAppSecret,
+  callbackURL: config.url + "/api/v1/auth/facebook/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    return cb(err, user);
+  });
+}
+));
 
 /**
  * Initialize passport
